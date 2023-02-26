@@ -56,10 +56,6 @@ FORM_USER_EDIT.addEventListener('submit', async (e) => {
 
 function getEditRoles(role) {
     let roles = [];
-    // if (role.indexOf("USER") >= 0) {
-    //     roles.push({"id": 1,
-    //         "name": 'ROLE_USER'});
-    // }
     if (role.indexOf("ADMIN") >= 0) {
         roles.push({"id": 2,
             "name": 'ROLE_ADMIN'});

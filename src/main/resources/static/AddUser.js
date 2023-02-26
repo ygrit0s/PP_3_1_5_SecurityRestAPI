@@ -11,7 +11,7 @@ FORM_USER_ADD.addEventListener('submit', (e)=>{
     let rolesValue = getRoles(Array.from(document.getElementById("rolesAdd").selectedOptions).map(role => role.value));
 
     fetch('http://localhost:8888/api/admin/users', {
-        method: "POST",
+        method: "PUT",
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json;charset=UTF-8'
@@ -36,9 +36,6 @@ FORM_USER_ADD.addEventListener('submit', (e)=>{
 
 function getRoles(role) {
     let roles = [];
-    // if (role.indexOf("USER") >= 0) {
-    //     roles.push({"id": 1});
-    // }
     if (role.indexOf("ADMIN") >= 0) {
         roles.push({"id": 2});
     }

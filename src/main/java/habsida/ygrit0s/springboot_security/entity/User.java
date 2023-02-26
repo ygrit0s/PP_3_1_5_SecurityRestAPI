@@ -1,6 +1,5 @@
 package habsida.ygrit0s.springboot_security.entity;
 
-import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -36,7 +35,7 @@ public class User implements UserDetails {
 	@Size(min = 4)
 	private String password;
 
-	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
 			name = "users_roles",
 			joinColumns = @JoinColumn(name = "user_id"),

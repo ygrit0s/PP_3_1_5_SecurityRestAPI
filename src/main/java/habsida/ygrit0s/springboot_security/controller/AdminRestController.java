@@ -27,12 +27,6 @@ public class AdminRestController {
 		return userService.getUser(id);
 	}
 
-	@PostMapping()
-	public String addUser(@RequestBody User user) {
-		userService.addUser(user);
-		return "User was successfully added";
-	}
-
 	@PutMapping()
 	public String updateUser(@RequestBody User user) {
 		userService.updateUser(user);
