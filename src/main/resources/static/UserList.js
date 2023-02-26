@@ -1,5 +1,5 @@
 const USERS_TABLE = document.getElementById("table-users");
-
+const ADMIN_TAB = document.getElementById("nav-admin-tab")
 function userList() {
     fetch('http://localhost:8888/api/admin/users')
         .then((res) => res.json())

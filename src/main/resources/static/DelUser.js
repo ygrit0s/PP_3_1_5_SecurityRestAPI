@@ -1,3 +1,4 @@
+const FORM_USER_DEL = document.getElementById("form-user-delete")
 function deleteModal(id) {
     fetch('http://localhost:8888/api/admin/users/' + id, {
         headers: {
@@ -7,26 +8,26 @@ function deleteModal(id) {
     }).then(res => {
         res.json()
             .then(user => {
-                document.getElementById('idDel').value = user.id;
-                document.getElementById('nameDel').value = user.name;
-                document.getElementById('surnameDel').value = user.surname;
-                document.getElementById('ageDel').value = user.age;
-                document.getElementById('usernameDel').value = user.username;
+                FORM_USER_DEL.id.value = user.id;
+                FORM_USER_DEL.name.value = user.name;
+                FORM_USER_DEL.surname.value = user.surname;
+                FORM_USER_DEL.age.value = user.age;
+                FORM_USER_DEL.username.value = user.username;
             })
     })
 }
 
 async function deleteUser() {
-    await fetch('http://localhost:8888/api/admin/users/' + document.getElementById('idDel').value, {
+    await fetch('http://localhost:8888/api/admin/users/' + FORM_USER_DEL.id.value, {
         method: 'DELETE',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json;charset=UTF-8'
         },
-        body: JSON.stringify(document.getElementById('idDel').value)
+        body: JSON.stringify(FORM_USER_DEL.id.value)
         })
         .then(() => {
-            document.getElementById("nav-admin-tab").click();
+            ADMIN_TAB.click();
             userList();
-            document.getElementById("closeDeleteModal").click();})
+            FORM_USER_DEL.close.click();})
 }

@@ -3,12 +3,7 @@ const FORM_USER_ADD = document.getElementById("form-user-add");
 FORM_USER_ADD.addEventListener('submit', (e)=>{
     e.preventDefault();
 
-    let nameValue = document.getElementById('nameAdd').value;
-    let surnameValue = document.getElementById('surnameAdd').value;
-    let ageValue = document.getElementById('ageAdd').value;
-    let usernameValue = document.getElementById('usernameAdd').value;
-    let passwordValue = document.getElementById('passwordAdd').value;
-    let rolesValue = getRoles(Array.from(document.getElementById("rolesAdd").selectedOptions).map(role => role.value));
+    let roleList = getRoles(Array.from(FORM_USER_ADD.roles.selectedOptions).map(role => role.value));
 
     fetch('http://localhost:8888/api/admin/users', {
         method: "PUT",
@@ -17,12 +12,12 @@ FORM_USER_ADD.addEventListener('submit', (e)=>{
             'Content-Type': 'application/json;charset=UTF-8'
         },
         body: JSON.stringify({
-            name: nameValue,
-            surname: surnameValue,
-            age: ageValue,
-            username: usernameValue,
-            password: passwordValue,
-            roles: rolesValue,
+            name: FORM_USER_ADD.name.value,
+            surname: FORM_USER_ADD.surname.value,
+            age: FORM_USER_ADD.age.value,
+            username: FORM_USER_ADD.username.value,
+            password: FORM_USER_ADD.password.value,
+            roles: roleList,
         })
     })
         .then(data => {
@@ -31,7 +26,7 @@ FORM_USER_ADD.addEventListener('submit', (e)=>{
             userList(USER);
         })
         .then(() => {
-            document.getElementById("nav-admin-tab").click();})
+            ADMIN_TAB.click();})
 })
 
 function getRoles(role) {

@@ -133,7 +133,7 @@
 												<br>
 												<label for="rolesAdd"><b>Role</b></label>
 												<select multiple class="form-control form-control-sm"
-												        id="rolesAdd" size="2" required>
+												        id="rolesAdd" name="roles" size="2" required>
 													<option value="USER">USER</option>
 													<option value="ADMIN">ADMIN</option>
 												</select>
@@ -189,18 +189,18 @@
 						       name="password" type="password" minlength="4" required/>
 						<br>
 						<label for="rolesEdit"><b>Role</b></label>
-						<select multiple class="form-control form-control-sm" id="rolesEdit"
-						        name="roles" size="2" required>
+						<select multiple class="form-control form-control-sm"
+						        id="rolesEdit" name="roles" size="2" required>
 							<option id="flag-user" value="USER">USER</option>
 							<option id="flag-admin" value="ADMIN">ADMIN</option>
 						</select>
 						<br>
 						<div class="modal-footer">
 							<button type="submit" class="btn btn-primary"
-							        id="button-edit">Edit
+							        id="button-edit" name="edit">Edit
 							</button>
 							<button type="button" class="btn btn-secondary"
-							        id="button-edit-close" data-bs-dismiss="modal">Close
+							        id="button-edit-close" name="close" data-bs-dismiss="modal">Close
 							</button>
 						</div>
 					</form>
@@ -245,17 +245,17 @@
 						<br>
 						<label for="rolesDel"><b>Role</b></label>
 						<select multiple class="form-control form-control-sm"
-						        id="rolesDel" size="2" disabled>
+						        id="rolesDel" name="roles" size="2" disabled>
 							<option value="USER">USER</option>
 							<option value="ADMIN">ADMIN</option>
 						</select>
 						<br>
 						<div class="modal-footer">
 							<button type="submit" class="btn btn-danger"
-							        id="button-delete" onclick="deleteUser()">Delete
+							        id="button-delete" name="delete" onclick="deleteUser()">Delete
 							</button>
 							<button type="button" class="btn btn-secondary"
-							        id="button-delete-close" data-bs-dismiss="modal">Close
+							        id="button-delete-close" name="close" data-bs-dismiss="modal">Close
 							</button>
 						</div>
 					</form>
