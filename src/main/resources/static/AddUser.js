@@ -11,7 +11,7 @@ FORM_USER_ADD.addEventListener('submit', (e)=>{
     let rolesValue = getRoles(Array.from(document.getElementById("rolesAdd").selectedOptions).map(role => role.value));
 
     fetch('http://localhost:8888/api/admin/users', {
-        method: "PUT",
+        method: "POST",
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json;charset=UTF-8'

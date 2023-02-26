@@ -39,15 +39,19 @@ public class UserService implements UserDetailsService {
 			return user.get();
 		}
 	}
-	
-	public boolean updateUser(User user) {
+
+	public boolean addUser(User user) {
 		if (getByUsername(user.getUsername()) != null) {
 			return false;
 		}
+		updateUser(user);
+		return true;
+	}
+
+	public void updateUser(User user) {
 		user.getRoles().add(new Role(1L,"ROLE_USER"));
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		userRepository.save(user);
-		return true;
 	}
 
 
