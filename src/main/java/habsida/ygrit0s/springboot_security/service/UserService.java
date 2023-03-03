@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Transactional
@@ -41,11 +42,14 @@ public class UserService implements UserDetailsService {
 	}
 
 	public boolean updateUser(User user) {
-		if ((user.getId() == null) & (getByUsername(user.getUsername()) != null)) {
-			return false;
+		if ((getByUsername(user.getUsername()) != null) &&
+				(!Objects.equals(getByUsername(user.getUsername()).getId(), user.getId()))) {
+				return false;
+			}
+		if ((user.getId() == null) || (!Objects.equals(getUser(user.getId()).getPassword(), user.getPassword()))) {
+			user.setPassword(passwordEncoder.encode(user.getPassword()));
 		}
 		user.getRoles().add(new Role(1L,"ROLE_USER"));
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		userRepository.save(user);
 		return true;
 	}
